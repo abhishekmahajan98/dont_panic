@@ -1,6 +1,6 @@
-import 'package:dont_panic/home_page.dart';
-import 'package:dont_panic/loginpage.dart';
-import 'package:dont_panic/registration.dart';
+import 'package:dont_panic/pages/home_page.dart';
+import 'package:dont_panic/pages/loginpage.dart';
+import 'package:dont_panic/pages/registration.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
