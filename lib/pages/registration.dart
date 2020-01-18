@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-class signUp extends StatefulWidget {
+
+class RegistrationPage extends StatefulWidget {
   @override
-  _signUpState createState() => _signUpState();
+  _RegistrationPageState createState() => _RegistrationPageState();
 }
 
-class _signUpState extends State<signUp> {
-  String email='';
-  String password='';
+class _RegistrationPageState extends State<RegistrationPage> {
+  String email = '';
+  String password = '';
   String uid;
   final _auth = FirebaseAuth.instance;
   //final _firestore = Firestore.instance;
@@ -17,9 +18,7 @@ class _signUpState extends State<signUp> {
     return Scaffold(
       body: Center(
         child: Container(
-          decoration: BoxDecoration(
-              color: Colors.blue
-          ),
+          decoration: BoxDecoration(color: Colors.blue),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -28,9 +27,9 @@ class _signUpState extends State<signUp> {
                   color: Colors.grey,
                 ),
                 child: TextField(
-                  onChanged: (value){
+                  onChanged: (value) {
                     setState(() {
-                      email=value;
+                      email = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -46,9 +45,9 @@ class _signUpState extends State<signUp> {
                   color: Colors.grey,
                 ),
                 child: TextField(
-                  onChanged: (value){
+                  onChanged: (value) {
                     setState(() {
-                      password=value;
+                      password = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -60,29 +59,27 @@ class _signUpState extends State<signUp> {
               ),
               SizedBox(height: 30.0),
               RaisedButton(
-
-                onPressed: () async{
-                  try {
-                    print('email:'+email+"   "+password);
-                    final firebaseUser = await _auth.createUserWithEmailAndPassword(
-                        email: email, password: password);
+                onPressed: () async {
+                  /*try {
+                    print('email:' + email + "   " + password);
+                    final firebaseUser =
+                        await _auth.createUserWithEmailAndPassword(
+                            email: email, password: password);
                     if (firebaseUser != null) {
                       final currentFirebaseUser = await _auth.currentUser();
                       loggedInUser = currentFirebaseUser;
                       email = loggedInUser.email;
                       uid = loggedInUser.uid;
-                      Navigator.pushNamed(context,'/homepage');
-                      print(loggedInUser.email+' logged in!!');
+                      Navigator.pushNamed(context, '/homepage');
+                      print(loggedInUser.email + ' logged in!!');
                     }
                   } catch (e) {
                     print(e);
-                  }
-
+                  }*/
+                  Navigator.pushNamed(context, '/home_page');
                 },
                 child: Text('Sign-Up'),
-
               ),
-
             ],
           ),
         ),
