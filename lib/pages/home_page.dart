@@ -1,5 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:dont_panic/components/chat_page.dart';
+import 'package:dont_panic/components/helpline_numbers_page.dart';
 import 'package:dont_panic/components/lost_and_found_page.dart';
 import 'package:dont_panic/components/main_page.dart';
 import 'package:dont_panic/components/radio_page.dart';
@@ -30,11 +32,15 @@ class _HomePageState extends State<HomePage> {
     'Home',
     'Radio',
     'Lost and found',
+    'Helpline Numbers',
+    'Help Chat',
   ];
   final List<Widget> _pages = [
     MainPage(),
     Radiochat(),
     LostAndFound(),
+    HelpNumbersPage(),
+    ChatPage(),
   ];
   BottomNavigationBarItem _buildNavigationItem(
       int index, IconData iconData, String text) {
@@ -45,12 +51,12 @@ class _HomePageState extends State<HomePage> {
       ),
       activeIcon: Icon(
         iconData,
-        color: Colors.red,
+        color: Colors.indigoAccent,
       ),
       title: Text(
         text,
         style: TextStyle(
-          color: _selectedIndex == index ? Colors.red : Colors.black,
+          color: _selectedIndex == index ? Colors.indigoAccent : Colors.black,
         ),
       ),
     );
@@ -85,12 +91,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),*/
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(
           Icons.call,
         ),
-      ),
+      ),*/
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
           setState(() {
@@ -98,12 +104,14 @@ class _HomePageState extends State<HomePage> {
           });
         },
         currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.shifting,
         items: <BottomNavigationBarItem>[
           _buildNavigationItem(0, FontAwesomeIcons.list, _pageTitles[0]),
-          _buildNavigationItem(1, FontAwesomeIcons.checkSquare, _pageTitles[1]),
           _buildNavigationItem(
-              2, FontAwesomeIcons.clipboardCheck, _pageTitles[2]),
+              1, FontAwesomeIcons.broadcastTower, _pageTitles[1]),
+          _buildNavigationItem(2, FontAwesomeIcons.book, _pageTitles[2]),
+          _buildNavigationItem(3, FontAwesomeIcons.firstAid, _pageTitles[3]),
+          _buildNavigationItem(4, FontAwesomeIcons.whatsapp, _pageTitles[4]),
         ],
       ),
       drawer: SideDrawer(),
